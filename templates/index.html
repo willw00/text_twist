@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Twist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+        .container {
+            max-width: 600px;
+            padding-top: 20px;
+        }
+        input {
+            max-width: 200px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Text Twist</h1>
+        <br>
+
+        <div class="container" id="subwords">
+            {% for group, words in subs.iteritems() %}
+                <h3>{{group}}-Letter Subwords</h3>
+                <ul id="{{group}}-letter">
+                    {% for word in words %}
+                        <li>{{word}}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}   
+        </div>
+
+        <form id="word" role="form" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <input type="text" class="form-control" name="number-one">
+            </div>
+        </form>
+        <form id="new" role="form" method="post">
+            <button type="submit" class="btn btn-default">New Word</button>
+        </form>
+        <br>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src={{ url_for('static', filename='main.js') }}></script>
+  </body>
+</html>
